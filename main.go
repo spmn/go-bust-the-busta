@@ -80,7 +80,7 @@ func main() {
 				continue
 			}
 
-			fmt.Printf("Round: %d, Busta: [%s]%s\n", roundNo, getTeamTag(common.Team(coachingTeam.IntVal)), busta.Name)
+			fmt.Printf("Round: %d, Busta: [%s]%s (%d)\n", roundNo, getTeamTag(common.Team(coachingTeam.IntVal)), busta.Name, busta.SteamID64)
 		}
 	})
 
@@ -102,7 +102,7 @@ func main() {
 			return
 		}
 
-		fmt.Printf("Round: %d, Busta: [%s]%s\n", roundNo, getTeamTag(common.Team(coachingTeam.IntVal)), e.Player.Name)
+		fmt.Printf("Round: %d, Busta: [%s]%s (%d)\n", roundNo, getTeamTag(common.Team(coachingTeam.IntVal)), e.Player.Name, e.Player.SteamID64)
 	})
 
 	p.RegisterEventHandler(func(events.DataTablesParsed) {
