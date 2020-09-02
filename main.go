@@ -93,7 +93,7 @@ func main() {
 		}
 		delete(bustas, e.Player)
 
-		if timeSinceRoundStart.Milliseconds() < 10000 {
+		if !inRound || timeSinceRoundStart.Milliseconds() < 10000 {
 			return
 		}
 
