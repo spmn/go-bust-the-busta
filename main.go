@@ -111,6 +111,7 @@ func main() {
 				obs := p.GameState().Participants().ByEntityID()[entity.ID()]
 				newObsMode := val.IntVal
 				coachingTeam := common.TeamUnassigned
+				timeSinceRoundStart := p.CurrentTime() - roundStartTime
 
 				if obs.Team != common.TeamSpectators {
 					return
@@ -121,11 +122,10 @@ func main() {
 					coachingTeam = common.Team(prop.IntVal)
 				}
 
-				// timeSinceRoundStart := p.CurrentTime() - roundStartTime
 				// fmt.Printf("%s -> %d [%fs]\n", obs.Name, newObsMode, timeSinceRoundStart.Seconds())
 
 				if newObsMode == obsModeInEye {
-					if !inRound {
+					if !inRound || timeSinceRoundStart.Milliseconds() < 500 {
 						delete(bustas, obs)
 					}
 				} else if newObsMode == obsModeFixed {
