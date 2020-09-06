@@ -82,6 +82,7 @@ func main() {
 
 			fmt.Printf("Round: %d, Busta: [%s]%s (%d)\n", roundNo, getTeamTag(common.Team(coachingTeam.IntVal)), busta.Name, busta.SteamID64)
 		}
+		bustas = make(map[*common.Player]bool)
 	})
 
 	p.RegisterEventHandler(func(e events.PlayerDisconnected) {
